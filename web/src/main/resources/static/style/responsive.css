@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/* PC 화면 스타일 */
+@media screen and (min-width: 1024px) {
+
+}
+
+/* 패드 화면 스타일 */
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+
+}
+
+/* 핸드폰 화면 스타일 */
+@media screen and (max-width: 767px) {
+
+}

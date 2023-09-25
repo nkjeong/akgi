@@ -1,0 +1,11 @@
+@charset "UTF-8";
+:root{
+	--background-body-color:#1a1a1a;
+	--main-border-color:#333333;
+	--member-section-color:#000000;
+	--background-side-color:#1e1e1e;
+	--sub-border-color:#2c2c2c;
+	--link-color_1:#a2a2a2;
+	--link-color_hover_1 : #efefef;
+	--basic-text-color:#858585;
+}

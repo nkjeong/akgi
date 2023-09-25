@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	height: 100vh;
+}
+
+body {
+	background-color: var(--background-body-color);
+	color: var(--basic-text-color);
+}
+
+header {
+	border-bottom: 1px solid var(--main-border-color);
+}
+
+header>section {
+	display: flex;
+	justify-content: center;
+}
+
+header nav {
+	display: flex;
+	align-items: center;
+}
+
+footer {
+	border-top: 1px solid var(--main-border-color);
+	background-color: var(--background-side-color);
+}
+
+.mainLayoutWidth {
+	display: flex;
+	width: 1440px;
+	border-top: 1px solid var(--sub-border-color);
+}
+
+nav ul {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav ul>li {
+	cursor: pointer;
+}
+
+nav ul>li:hover {
+	color: var(--link-color_hover_1);
+	text-decoration: underline;
+}
+
+.memberNav {
+	display: flex;
+	background-color: var(--member-section-color);
+	color: var(--link-color_1);
+}
+
+.memberNav section.mainLayoutWidth>section:first-child,
+.memberNav section.mainLayoutWidth>section:last-child {
+	display: flex;
+	width: 20%;
+}
+
+.memberNav section.mainLayoutWidth>section:first-child {
+	justify-content: flex-start;
+}
+
+.memberNav section.mainLayoutWidth>section:last-child {
+	justify-content: flex-end;
+}
+
+.memberNav section.mainLayoutWidth>section:last-child li:not(:last-child),
+.memberNav section.mainLayoutWidth>section:first-child:not(:first-child) {
+	padding: 0 5px;
+}
+
+.memberNav section.mainLayoutWidth>section:first-child+section {
+	display: flex;
+	justify-content: center;
+	padding: 15px 0;
+	flex: 1;
+}
+
+.mainNav {
+	background-color: var(--background-side-color);
+}
+
+.mainNav>section>section,
+.mainNav>section>section>nav>ul {
+	width: 100%;
+}
+
+.mainNav>section>section>nav>ul {
+	justify-content: space-between;
+}
+
+.mainNav>section>section>nav>ul>li {
+	padding: 10px 0;
+	position: relative;
+}
+.mainNav>section>section>nav>ul>li>article.subMenu{
+	position: absolute;
+	width:150px;
+	border:1px solid #999999;
+	background-color: #eeeeee;
+}
+.mainNav>section>section>nav>ul>li>article.subMenu > ul{
+	flex-direction: column;
+}
+.mainNav nav ul > li:hover > article.subMenu {
+    color: #000000; /* 원래의 color로 재정의 */
+    text-decoration: none; /* text-decoration 제거 */
+}
