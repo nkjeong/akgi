@@ -11,9 +11,9 @@
     width: 100px;
     height: 100px;
     transform-style: preserve-3d;
-    animation: animate2 30s linear infinite;
+    animation: animate 30s linear infinite;
 }
-@keyframes animate2
+@keyframes animate
 {
 	0% {
     	transform: perspective(1000px) rotateY(0deg);
@@ -41,4 +41,61 @@
     transform-style: preserve-3d;
     transform: rotateY(calc(var(--i)*45deg)) translateZ(200px);
     -webkit-box-reflect: below 0px linear-gradient(transparent,transparent,#0004)
+}
+
+section.banner_3d_2Sec{
+	height:500px;
+}
+
+section.banner_3d_2Sec > section.mainLayoutWidth{
+	justify-content: center;
+	align-items: center;
+}
+
+.banner_3d_2 .box_2 {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    transform-style: preserve-3d;
+    animation: animate2 20s linear infinite;
+}
+
+.banner_3d_2 .box_2:before {
+    content: "Perfect! A specialist store that will no longer exist";
+    position: absolute;
+    text-wrap: nowrap;
+    font-weight: 500;
+    font-size: 2.0rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--basic-text-color);
+}
+
+.banner_3d_2 .box_2 span img{
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+@keyframes animate2{
+	0% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(35deg);
+	}
+	100% {
+	    transform: perspective(1000px) rotateX(360deg) rotateY(35deg);
+	}
+}
+.banner_3d_2 .box_2 span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: rotateX(calc(var(--i)*45deg)) translateZ(200px);
 }
