@@ -18,6 +18,42 @@ body {
 	color: var(--basic-text-color);
 }
 
+.offcanvas.offcanvas-start{
+	width:700px !important;
+	border-right: var(--bs-offcanvas-border-width) solid var(--sub-border-color-hover);
+}
+.offcanvas{
+	background-color: var(--background-side-color);
+}
+.offcanvas .offcanvas-header{
+	background-color: var(--member-section-color);
+}
+
+.offcanvas.offcanvas-start .offcanvas-title{
+	font-weight: bold;
+	color: var(--basic-text-color);
+}
+.offcanvas.offcanvas-start .offcanvas-body>div{
+	display: flex;
+}
+.offcanvas.offcanvas-start .offcanvas-body>div>section{
+	height:350px;
+}
+.offcanvas.offcanvas-start .offcanvas-body>div>section:first-child{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width:350px;
+	border: 1px solid var(--sub-border-color);
+	border-radius: 10px;
+}
+.offcanvas.offcanvas-start .offcanvas-body>div>section:first-child img{
+	width:90%;
+	border-radius: 10px;
+}
+.offcanvas.offcanvas-start .offcanvas-body>div>section:last-child{
+	flex: 1;
+}
 header {
 	border-bottom: 1px solid var(--main-border-color);
 }
