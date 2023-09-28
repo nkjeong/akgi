@@ -1,7 +1,28 @@
 @charset "UTF-8";
 /* PC 화면 스타일 */
-@media screen and (min-width: 1024px) {
-
+@media screen and (max-width: 1600px) {
+	.mainNav>section>section>nav>ul>li:first-child>article.subMenu{
+	    left:0;
+	    transform: translateX(0) translateY(20px);
+	}
+	.mainNav>section>section>nav>ul>li:first-child:hover .subMenu {
+	    transform: translateX(0) translateY(7px);
+	}
+	.mainNav>section>section>nav>ul>li:last-child>article.subMenu{
+	    right:0;
+	    transform: translateX(-90%) translateY(20px);
+	}
+	.mainNav>section>section>nav>ul>li:last-child:hover .subMenu {
+	    transform: translateX(-90%) translateY(7px);
+	}
+	.mainNav>section>section>nav>ul>li:last-child:hover .subMenu,
+	.mainNav>section>section>nav>ul>li:first-child:hover .subMenu{
+		visibility: visible;
+	    opacity: 1;
+	}
+	.mainLayoutWidth{
+		width: 100% !important;
+	}
 }
 
 /* 패드 화면 스타일 */

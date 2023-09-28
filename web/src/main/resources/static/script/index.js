@@ -65,4 +65,7 @@ const subMenu = async (categoryCode, ele) => {
 		`;
     });
     getSubMenuSetElement.innerHTML = html;
+    if(categories.length == 0){
+		getSubMenuSetElement.parentNode.style.display = 'none';
+	}
 };
