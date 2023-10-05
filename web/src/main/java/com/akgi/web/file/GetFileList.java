@@ -17,8 +17,6 @@ public class GetFileList {
     public List<String> getFilesList(@RequestParam String directoryPath) {
         File directory = new File(directoryPath);
         String realPath = directory.getAbsolutePath();
-        System.out.println(directoryPath);
-        System.out.println(realPath);
         
         File realDirectory = new File(realPath);
         

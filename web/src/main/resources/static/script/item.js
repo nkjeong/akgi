@@ -52,8 +52,31 @@ const itemDetailView = (ele) => {
 	const offcanvas = document.querySelector('div.offcanvas.offcanvas-start');
 	const offcanvasExampleLabel = offcanvas.querySelector('#offcanvasExampleLabel');
 	const representativeImage = offcanvas.querySelector('.offcanvas.offcanvas-start .offcanvas-body>div>section:first-child');
+	const itemInfomation = offcanvas.querySelector('.offcanvas.offcanvas-start .offcanvas-body>div>section:last-child');
 	offcanvasExampleLabel.innerText = itemName;
 	representativeImage.innerHTML = `
 		<img src="/images/1000/gransen_${code}.jpg">
+	`;
+	itemInfomation.innerHTML = `
+		<section>
+			<article>정상가</article>
+			<article></article>
+		</section>
+		<section>
+			<article>공급가</article>
+			<article></article>
+		</section>
+		<section>
+			<article>원산지</article>
+			<article></article>
+		</section>
+		<section>
+			<article>모델명</article>
+			<article></article>
+		</section>
+		<section>
+			<article>옵 션</article>
+			<article></article>
+		</section>
 	`;
 }
