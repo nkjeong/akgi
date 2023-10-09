@@ -3,16 +3,19 @@
 const getCategoryItem = async (categoryPrefix, name) => {
     const listTitle = document.querySelector('.listCategory .listTitle span.itemSize');
     try {
-        const response = await fetch(`/api/gallery/category/${categoryPrefix}`);
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+		if(listTitle){
+	        const response = await fetch(`/api/gallery/category/${categoryPrefix}`);
+	        if (!response.ok) {
+	            throw new Error('Network response was not ok');
+	        }
+	        const data = await response.json();
+	        listTitle.innerHTML = `<b>${name}(${data.length}개)</b>`;
+	        setList(data);
         }
-        const data = await response.json();
-        listTitle.innerHTML = `<b>${name}(${data.length}개)</b>`;
-        setList(data);
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error.message);
     }
+    
 }
 
 const createItemHTML = (item) => {

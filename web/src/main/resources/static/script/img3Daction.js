@@ -11,14 +11,16 @@ const set3DactionImg = async (ele, dir, finalDir) => {
 				<span style="--i:${i+1};"><img src="/images/banner/${finalDir}/${d}"></span>
 			`;
 		});
-		getEle.innerHTML = html;
+		if(getEle){
+			getEle.innerHTML = html;
+		}
     } catch (error) {
         console.error('Error fetching the file list:', error);
     }
 }
 
 
-//set3DactionImg('.box_1', 'E:/gitakgi/akgi/web/src/main/resources/static/images/banner/banner_3d_1', 'banner_3d_1');
-//set3DactionImg('.box_2', 'E:/gitakgi/akgi/web/src/main/resources/static/images/banner/banner_3d_2', 'banner_3d_2');
-set3DactionImg('.box_1', 'H:/0_akgi/github/akgi/web/src/main/resources/static/images/banner/banner_3d_1', 'banner_3d_1');
-set3DactionImg('.box_2', 'H:/0_akgi/github/akgi/web/src/main/resources/static/images/banner/banner_3d_2', 'banner_3d_2');
+set3DactionImg('.box_1', 'E:/gitakgi/akgi/web/src/main/resources/static/images/banner/banner_3d_1', 'banner_3d_1');
+set3DactionImg('.box_2', 'E:/gitakgi/akgi/web/src/main/resources/static/images/banner/banner_3d_2', 'banner_3d_2');
+//set3DactionImg('.box_1', 'H:/0_akgi/github/akgi/web/src/main/resources/static/images/banner/banner_3d_1', 'banner_3d_1');
+//set3DactionImg('.box_2', 'H:/0_akgi/github/akgi/web/src/main/resources/static/images/banner/banner_3d_2', 'banner_3d_2');

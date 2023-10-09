@@ -296,6 +296,30 @@ main>section.mainDivider>section {
 	border-radius: 10px 10px 10px 10px;
 }
 
+.memberWrapper input{
+	all: unset;
+	background-color: var(--input-basic-color);
+	border-radius: 10px 10px 10px 10px;
+	padding: 5px 10px;
+}
+form.joinForm{
+	display: flex;
+	width:100%;
+	padding:20px;
+}
+form.joinForm > section{
+	width:50%;
+}
+form.joinForm > section:first-child{
+	border-right: 1px dotted var(--sub-border-color);
+}
+form.joinForm > section > section{
+	margin-bottom:20px;
+}
+form.joinForm > section > section > label{
+	width:100px;
+}
+
 .info .subMessage {
 	display: flex;
 	justify-content: center;
@@ -364,6 +388,26 @@ main>section.mainDivider>section {
 	background-image: url(/images/banner/img/banner_01.jpg);
 	background-position: center;
 	background-size: cover;
+	border-radius: 10px;
+}
+section.staticBannerJoin article {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-image: url(/images/banner/img/banner_02.jpg);
+}
+section.staticBannerJoin article > p{
+	color: var(--banner-in-text-color);
+	text-shadow: 2px 2px 5px var(--member-section-color);
+}
+section.staticBannerJoin article > p:first-child{
+	font-size: 3.0rem;
+	font-weight: 700;
+}
+
+section.memberWrapper{
+	border: 1px solid var(--sub-border-color);
 	border-radius: 10px;
 }
 
