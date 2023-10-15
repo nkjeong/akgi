@@ -307,17 +307,71 @@ form.joinForm{
 	width:100%;
 	padding:20px;
 }
+
+form.joinForm section.joinFormTitle{
+	font-size:1.2rem;
+	font-weight:700;
+	border-bottom:1px solid var(--sub-border-color);
+	padding:10px;
+}
+
 form.joinForm > section{
 	width:50%;
 }
 form.joinForm > section:first-child{
 	border-right: 1px dotted var(--sub-border-color);
 }
+form.joinForm > section:first-child{
+	padding-right:20px;
+}
+form.joinForm > section:first-child + section{
+	padding-left:20px;
+}
+
 form.joinForm > section > section{
 	margin-bottom:20px;
+	padding-left:30px;
 }
-form.joinForm > section > section > label{
-	width:100px;
+form.joinForm > section > section label{
+	width:200px;
+}
+
+form section.inButton, form section.inMsg{
+	display: flex;
+}
+form article.ckPassword{
+	font-size: 0.8rem;
+}
+
+form section.inButton article:last-child{
+	margin: 0 10px;
+}
+form input[type="button"]{
+	font-size:0.9rem;
+}
+form input[type="button"]:hover{
+	background-color: var(--sub-border-color);
+	color:var(--event-color);
+}
+
+form input[type=file]{
+	font-size:0.9rem;
+}
+
+form input[type=file]::file-selector-button{
+	background: var(--input-basic-color);
+	border:0;
+	font-size:0.9rem;
+	color: var(--basic-text-color);
+	border-radius: 10px;
+}
+form input[type=file]::file-selector-button:hover{
+	background-color: var(--sub-border-color);
+	color:var(--event-color);
+}
+
+form input[type=file]:hover{
+	color: var(--link-color_hover_1);
 }
 
 .info .subMessage {

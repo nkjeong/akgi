@@ -12,26 +12,38 @@
 	<section class="mainLayoutWidth memberWrapper">
 		<form name="joinForm" class="joinForm">
 			<section>
-				<section>개인정보</section>
-				<section>
-					<label for="userId">아이디</label>
-					<input type="text" name="userId" autocomplete="off" required>
+				<section class="joinFormTitle">개인정보</section>
+				<section class="inButton">
+					<article>
+						<label for="userId">아이디</label>
+						<input type="text" name="userId" autocomplete="off" class="userId" required>
+					</article>
+					<article class="idDoubleCheckMsg"></article>
 				</section>
 				<section>
 					<label for="userPw">비밀번호</label>
-					<input type="password" name="userPw" autocomplete="off" required>
+					<input type="password" name="userPw" autocomplete="off" class="userPw" required>
 				</section>
-				<section>
-					<label for="userPwRe">비밀번호확인</label>
-					<input type="password" name="userPwRe" autocomplete="off" required>
+				<section class="inMsg">
+					<article>
+						<label for="userPwRe">비밀번호확인</label>
+						<input type="password" name="userPwRe" autocomplete="off" class="userPwRe" required>
+					</article>
+					<article class="ckPassword"></article>
+					<input type="hidden" class="ckPwd">
 				</section>
 				<section>
 					<label for="userEmail">이메일</label>
 					<input type="email" name="userEmail" autocomplete="off" required>
 				</section>
-				<section>
-					<label for="userZipCode">우편번호</label>
-					<input type="text" name="userZipCode" autocomplete="off" required readonly>
+				<section class="inButton">
+					<article>
+						<label for="userZipCode">우편번호</label>
+						<input type="text" name="userZipCode" autocomplete="off" required readonly>
+					</article>
+					<article>
+						<input type="button" value="주소찾기" data-button="findAddrPersonal">
+					</article>
 				</section>
 				<section>
 					<label for="userAddr_1">주소</label>
@@ -50,7 +62,46 @@
 					<input type="text" name="userAddr_2" autocomplete="off" required>
 				</section>
 			</section>
-			<section></section>
+			<section>
+				<section class="joinFormTitle">사업자정보</section>
+				<section>
+					<label for="userId">회사명</label>
+					<input type="text" name="companyName" autocomplete="off" required>
+				</section>
+				<section>
+					<label for="userId">사업자번호</label>
+					<input type="text" name="businessNumber" autocomplete="off" required>
+				</section>
+				<section class="inButton">
+					<article>
+						<label for="userZipCode">우편번호</label>
+						<input type="text" name="companyZipCode" autocomplete="off" required readonly>
+					</article>
+					<article>
+						<input type="button" value="주소찾기" data-button="findAddrCompany">
+					</article>
+				</section>
+				<section>
+					<label for="userAddr_1">주소</label>
+					<input type="text" name="companyAddr_1" autocomplete="off" required readonly>
+				</section>
+				<section>
+					<label for="userAddr_2">나머지주소</label>
+					<input type="text" name="companyAddr_2" autocomplete="off" required>
+				</section>
+				<section>
+					<label for="userAddr_1">전화번호</label>
+					<input type="text" name="companyPhone" autocomplete="off" required>
+				</section>
+				<section>
+					<label for="userAddr_1">팩스번호</label>
+					<input type="text" name="companyFAX" autocomplete="off" required>
+				</section>
+				<section>
+					<label for="userAddr_1">사업자등록증 업로드</label>
+					<input type="file" name="companyFAX" autocomplete="off" required>
+				</section>
+			</section>
 		</form>
 	</section>
 </section>
