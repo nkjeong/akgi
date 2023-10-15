@@ -61,19 +61,21 @@ class PasswordValidator {
     }
 
     addEventListeners() {
-        [this.password1Element, this.password2Element].forEach(passwordInput => {
-            passwordInput.addEventListener('keyup', () => {
-                if (passwordInput.value.length < 10) {
-                    this.feedbackElement.innerHTML = `<span style="color:#e42221;">비밀번호를 10자 이상 입력해 주세요</span>`;
-                    this.statusElement.value = 'NO';
-                } else if (this.hasConsecutiveChars(passwordInput.value)) {
-                    this.feedbackElement.innerHTML = `<span style="color:#e42221;">연속문자 3자 이상 사용불가!</span>`;
-                    this.statusElement.value = 'NO';
-                } else {
-                    this.validatePasswords();
-                }
-            });
-        });
+		if(this.password1Element && this.password2Element){
+			[this.password1Element, this.password2Element].forEach(passwordInput => {
+	            passwordInput.addEventListener('keyup', () => {
+	                if (passwordInput.value.length < 10) {
+	                    this.feedbackElement.innerHTML = `<span style="color:#e42221;">비밀번호를 10자 이상 입력해 주세요</span>`;
+	                    this.statusElement.value = 'NO';
+	                } else if (this.hasConsecutiveChars(passwordInput.value)) {
+	                    this.feedbackElement.innerHTML = `<span style="color:#e42221;">연속문자 3자 이상 사용불가!</span>`;
+	                    this.statusElement.value = 'NO';
+	                } else {
+	                    this.validatePasswords();
+	                }
+	            });
+	        });
+		}
     }
 }
 
