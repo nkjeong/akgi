@@ -340,7 +340,11 @@ form section.inButton, form section.inMsg{
 	display: flex;
 }
 form article.ckPassword{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	font-size: 0.8rem;
+	padding-left:10px;
 }
 
 form section.inButton article:last-child{
