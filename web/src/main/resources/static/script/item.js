@@ -102,8 +102,11 @@ const itemDetailView = (ele) => {
         ${createInfoSection('코 드', code)}
     `;
 	//getDetailImg('E:/gitakgi/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
-    getDetailImg('H:/0_akgi/github/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
-        itemNameSection.innerHTML = `<section>Detail View [${itemName}]</section>`;
-        itemDetailSection.innerHTML = `<section><img src="/images/detail/${data}"></section>`;
-    });
+	getDetailImg('H:/0_akgi/github/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
+	    console.log(data);
+	    itemNameSection.innerHTML = `<section>Detail View [${itemName}]</section>`;
+	    let timestamp = new Date().getTime(); // 현재 타임스탬프
+	    itemDetailSection.innerHTML = `<section><img src="/images/detail/${data}?t=${timestamp}"></section>`;
+	});
+
 }
