@@ -17,9 +17,9 @@ public class GetFileList {
     public List<String> getFilesList(@RequestParam String directoryPath) {
         File directory = new File(directoryPath);
         String realPath = directory.getAbsolutePath();
-        
+
         File realDirectory = new File(realPath);
-        
+
         File[] files = realDirectory.listFiles();
         List<String> filenames = new ArrayList<>();
 
@@ -29,5 +29,19 @@ public class GetFileList {
             }
         }
         return filenames;
+    }
+
+    @GetMapping("/search")
+    public String getSpecificFile(@RequestParam String directoryPath, @RequestParam String filename) {
+        File directory = new File(directoryPath);
+        String realPath = directory.getAbsolutePath();
+
+        File specificFile = new File(realPath, filename);
+
+        if (specificFile.exists() && specificFile.isFile()) {
+            return specificFile.getName();
+        } else {
+            return "noimg.png";
+        }
     }
 }
