@@ -78,7 +78,7 @@ const itemDetailView = (ele) => {
     const representativeImage = offcanvasFirstDiv.querySelector('section:first-child');
     const itemInfomation = offcanvasFirstDiv.querySelector('section:last-child');
     const itemNameSection = offcanvasLastDiv.querySelector('section:first-child');
-    const itemDetailSection = offcanvasLastDiv.querySelector('section:last-child');
+    const itemDetailSection = offcanvasLastDiv.querySelector('section:last-child img');
 
     offcanvasExampleLabel.innerText = `${itemName} ${itemNumber}`;
     
@@ -101,12 +101,10 @@ const itemDetailView = (ele) => {
         ${createInfoSection('옵 션', '')}
         ${createInfoSection('코 드', code)}
     `;
-	//getDetailImg('E:/gitakgi/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
-	getDetailImg('H:/0_akgi/github/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
-	    console.log(data);
+	getDetailImg('E:/gitakgi/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
+	//getDetailImg('H:/0_akgi/github/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
 	    itemNameSection.innerHTML = `<section>Detail View [${itemName}]</section>`;
-	    let timestamp = new Date().getTime(); // 현재 타임스탬프
-	    itemDetailSection.innerHTML = `<section><img src="/images/detail/${data}?t=${timestamp}"></section>`;
+	    itemDetailSection.setAttribute('src', '/images/detail/'+data);
 	});
 
 }
