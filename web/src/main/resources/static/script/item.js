@@ -101,8 +101,8 @@ const itemDetailView = (ele) => {
         ${createInfoSection('옵 션', '')}
         ${createInfoSection('코 드', code)}
     `;
-	getDetailImg('E:/gitakgi/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
-	//getDetailImg('H:/0_akgi/github/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
+	//getDetailImg('E:/gitakgi/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
+	getDetailImg('H:/0_akgi/github/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
 	    itemNameSection.innerHTML = `<section>Detail View [${itemName}]</section>`;
 	    itemDetailSection.setAttribute('src', '/images/detail/'+data);
 	});
