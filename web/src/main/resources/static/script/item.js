@@ -1,21 +1,26 @@
 "use strict";
 
-const getCategoryItem = async (categoryPrefix, name) => {
-    const listTitle = document.querySelector('.listCategory .listTitle span.itemSize');
+//카테고리 상품 가져오기
+const getCategoryItem = async (url, name, setMode) => {
+    let listTitle;
+    if(setMode == 'category'){
+		listTitle = document.querySelector('.listCategory .listTitle span.itemSize');
+	}else{
+		listTitle = document.querySelector('.listAll .listTitle span.itemSize');
+	}
     try {
 		if(listTitle){
-	        const response = await fetch(`/api/gallery/category/${categoryPrefix}`);
+	        const response = await fetch(url);
 	        if (!response.ok) {
 	            throw new Error('Network response was not ok');
 	        }
 	        const data = await response.json();
-	        listTitle.innerHTML = `<b>${name}(${data.length}개)</b>`;
-	        setList(data);
+			listTitle.innerHTML = `<b>${name}(${data.length}개)</b>`;
+	        setList(data, setMode);
         }
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error.message);
     }
-    
 }
 
 const createItemHTML = (item) => {
@@ -24,30 +29,41 @@ const createItemHTML = (item) => {
     let itemString = JSON.stringify(item).replace(/"/g, '&quot;');
     return `
         <section class="item" data-item="${itemString}" class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-            <article><img src="/images/1000/gransen_${code}.jpg"></article>
+            <article data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="${item.name}"><img src="/images/1000/gransen_${code}.jpg"></article>
             <article>${itemName}</article>
             <article>${getCurrentMony(item.price)}</article>
         </section>
     `;
 }
 
-const setList = (data) => {
-    const categoryList = document.querySelector('.listCategory .itemList');
-    const itemsToShow = data.slice(0, Math.min(data.length, 6));
-    categoryList.innerHTML = itemsToShow.map(createItemHTML).join('');
+const setList = (data, setMode) => {
+	let listEle;
+	let limited;
+	if(setMode == 'category'){
+		listEle = document.querySelector('.listCategory .itemList');
+		limited = 6;
+	}else{
+		listEle = document.querySelector('.listAll .itemList');
+		limited = 24;
+	}
+    const itemsToShow = data.slice(0, Math.min(data.length, limited));
+    listEle.innerHTML = itemsToShow.map(createItemHTML).join('');
     
-    const item = categoryList.querySelectorAll('section.item');
+			const tooltipTriggerList = listEle.querySelectorAll('[data-bs-toggle="tooltip"]');
+			const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+    
+    const item = listEle.querySelectorAll('section.item');
     item.forEach(btns=>{
 		btns.addEventListener('click', btn => {
 			itemDetailView(btn.currentTarget, data);
 		});
-	})
+	});
 }
 
 const setCategoryNumber = (categoryNumbers) => {
     const number = getRandomNumber(1, categoryNumbers.length);
     const { code, name } = categoryNumbers[number - 1];
-    getCategoryItem(code, name);
+    getCategoryItem(`/api/gallery/category/${code}`, name, 'category');
 }
 
 const retrieveItemData = (ele) => {
@@ -106,5 +122,7 @@ const itemDetailView = (ele) => {
 	    itemNameSection.innerHTML = `<section>Detail View [${itemName}]</section>`;
 	    itemDetailSection.setAttribute('src', '/images/detail/'+data);
 	});
-
 }
+
+//전체상품 가져오기
+getCategoryItem('/api/gallery', '전체', 'all');
