@@ -37,4 +37,16 @@ public class GalleryController {
     public ResponseEntity<List<Gallery>> getGalleriesByNameContaining(@PathVariable String partName) {
         return ResponseEntity.ok(galleryService.getGalleriesByNameContaining(partName));
     }
+    
+    @GetMapping("/count")
+    public ResponseEntity<Long> getGalleryCount() {
+        long count = galleryService.countAllGalleries();
+        return ResponseEntity.ok(count);
+    }
+    
+    @GetMapping("/search/{partName}")
+    public ResponseEntity<List<Gallery>> getGalleriesByNameWithAndSearch(@PathVariable String partName) {
+        List<Gallery> results = galleryService.getGalleriesByNameWithAndSearch(partName);
+        return ResponseEntity.ok(results);
+    }
 }

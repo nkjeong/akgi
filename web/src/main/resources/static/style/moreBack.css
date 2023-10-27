@@ -1,0 +1,62 @@
+@charset "UTF-8";
+.moreBack{
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	width: 100%;
+	height:100vh;
+	background-color: var(--member-section-color);
+	overflow-y: hidden;
+}
+
+.moreBack.fadeIn {
+    animation-name: fadeIn;
+}
+
+.moreBack.fadeOut {
+    animation-name: fadeOut;
+}
+.moreBack.fadeIn, .moreBack.fadeOut{
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.5s;  /* 원하는 시간으로 설정 */
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.moreBack > section:first-child{
+	display: flex;
+	justify-content: center;
+	padding:20px 0;
+	font-size: 1.5rem;
+	font-weight: 700;
+	position: relative;
+}
+.moreBack > section:first-child::before{
+	content:"";
+	position: absolute;
+	width:100%;
+	height:2px;
+	background-color: var(--sub-border-color);
+	bottom:0;
+}
+
+.moreBack > section:last-child{
+	flex:1;
+	overflow-y: scroll;
+}

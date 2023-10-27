@@ -17,6 +17,7 @@ body {
 	flex-direction: column;
 	background-color: var(--background-body-color);
 	color: var(--basic-text-color);
+	font-family: 'Roboto', sans-serif;
 }
 
 .offcanvas.offcanvas-start {
@@ -110,26 +111,26 @@ div.offcanvas-body > div:first-child > section > section > article:last-child{
 
 /**/
 /* Chrome, Safari 등 Webkit 기반 브라우저 */
-.offcanvas-body::-webkit-scrollbar,  body::-webkit-scrollbar{
+.offcanvas-body::-webkit-scrollbar,  body::-webkit-scrollbar, .moreBack > section:last-child::-webkit-scrollbar{
     width: 8px; /* 스크롤바의 너비 */
 }
 
-.offcanvas-body::-webkit-scrollbar-track, body::-webkit-scrollbar-track{
+.offcanvas-body::-webkit-scrollbar-track, body::-webkit-scrollbar-track, .moreBack > section:last-child::-webkit-scrollbar-track{
     background: #f2f2f2; /* 스크롤바의 트랙 색상 */
     border-radius: 6px; /* 스크롤바 트랙의 모서리 둥글게 */
 }
 
-.offcanvas-body::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb{
+.offcanvas-body::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb, .moreBack > section:last-child::-webkit-scrollbar-thumb{
     background: #888; /* 스크롤바 색상 */
     border-radius: 6px; /* 스크롤바의 모서리 둥글게 */
 }
 
-.offcanvas-body::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover{
+.offcanvas-body::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover, .moreBack > section:last-child::-webkit-scrollbar-thumb:hover{
     background: #555; /* 스크롤바에 마우스를 올렸을 때의 색상 */
 }
 
 /* Firefox */
-.offcanvas-body, body{
+.offcanvas-body, body, .moreBack > section:last-child{
 	scrollbar-width: thin;
 	scrollbar-color: #888 #f2f2f2;
 }
@@ -309,6 +310,11 @@ main>section.mainDivider>section {
 	border: 1px solid var(--sub-border-color-hover);
 }
 
+.info .itemInfomation > section:not(section.infoTitle){
+	font-size: 0.8rem;
+	padding-top:10px;
+}
+
 .info .infoTitle {
 	width: 100%;
 	padding: 5px;
@@ -316,7 +322,7 @@ main>section.mainDivider>section {
 	background-color: var(--background-body-color);
 	border-bottom: 1px solid var(--sub-border-color);
 	border-radius: 10px 10px 0 0;
-	font-family: 'Roboto', sans-serif;
+	font-weight: 700;
 }
 
 .info .banner_img_1 {
@@ -336,7 +342,6 @@ main>section.mainDivider>section {
 }
 
 .info .banner_img_1>section:first-child {
-	font-family: 'Roboto', sans-serif;
 	font-weight: 500;
 	font-style: italic;
 }
@@ -510,14 +515,26 @@ form input[type=file]:hover{
 .listAll .itemList section{
 	margin-bottom:30px;
 }
+.fa-arrow-up-right-from-square{
+	cursor:pointer;
+}
+.fa-arrow-up-right-from-square:hover{
+	color:var(--event-color);
+}
 
-.staticBanner article {
+.staticBanner_1 article,  .staticBanner_3 article{
 	width: 100%;
 	height: 350px;
-	background-image: url(/images/banner/img/banner_01.jpg);
+	
 	background-position: center;
 	background-size: cover;
 	border-radius: 10px;
+}
+.staticBanner_1 article{
+	background-image: url(/images/banner/img/banner_01.jpg);
+}
+.staticBanner_3 article{
+	background-image: url(/images/banner/img/banner_03.jpg);
 }
 section.staticBannerJoin article {
 	display: flex;
