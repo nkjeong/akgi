@@ -36,11 +36,24 @@ const setSubMenus = (element) => {
 const updateSubMenu = async (categoryCode, subMenuElement) => {
     const categories = await fetchJSON(`/categoryone/category/${categoryCode}`);
     const ulElement = subMenuElement.querySelector('ul');
-    ulElement.innerHTML = categories.map(category => `<li>${category.name}</li>`).join('');
+    ulElement.innerHTML = categories.map(category => `<li data-code="${categoryCode}" data-subcode="${category.code}">${category.name}</li>`).join('');
     if (categories.length === 0) {
         ulElement.parentNode.style.display = 'none';
     }
-};
+    
+    const getSubmenus = ulElement.querySelectorAll('li');
+    getSubmenus.forEach((btns)=>{
+		btns.addEventListener('click', (btn)=>{
+			getSubItems(btn.target);
+		});
+	});
+}
+
+const getSubItems = (ele) => {
+	const code = ele.dataset.code+ele.dataset.subcode;
+	const menuName = ele.textContent;
+	getCategoryItem(`/api/gallery/code/${code}`, menuName, 'subCategory');
+}
 
 (async () => {
     try {

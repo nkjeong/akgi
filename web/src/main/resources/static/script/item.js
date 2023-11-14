@@ -7,6 +7,8 @@ const getCategoryItem = async (url, name, setMode) => {
 		listTitle = document.querySelector('.listCategory .listTitle span.itemSize');
 	}else if(setMode == 'all'){
 		listTitle = document.querySelector('.listAll .listTitle span.itemSize');
+	}else if(setMode == 'subCategory'){
+		listTitle = document.querySelector('.listSearch .listTitle span.itemSize');
 	}else{
 		const urlPath = url.split('/');
 		const keyword = ' <span style="color:#e42221;">{' + urlPath[urlPath.length-1] + '}</span>';
@@ -127,8 +129,8 @@ const itemDetailView = (ele) => {
         ${createInfoSection('옵 션', '')}
         ${createInfoSection('코 드', code)}
     `;
-	//getDetailImg('E:/gitakgi/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
-	getDetailImg('H:/0_akgi/github/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
+	getDetailImg('E:/gitakgi/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
+	//getDetailImg('H:/0_akgi/github/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
 	    itemNameSection.innerHTML = `<section>Detail View [${itemName}]</section>`;
 	    itemDetailSection.setAttribute('src', '/images/detail/'+data);
 	});
