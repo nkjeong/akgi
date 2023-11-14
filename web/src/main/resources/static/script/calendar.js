@@ -11,7 +11,7 @@ const setGransenInfo = async (url, cls) => {
         let html;
         if(cls == 'setTodate'){
 			html = `
-	        	${data.year}년 ${data.month}월 ${data.date}일 ${data.toDay}요일 현재
+	        	${data.year}년 ${data.month}월 ${data.date}일 ${data.toDay}
 	        `;
 		}else{
 			html = `
@@ -23,5 +23,7 @@ const setGransenInfo = async (url, cls) => {
         console.error('There was a problem with the fetch operation:', error.message);
     }
 }
-setGransenInfo('/calendar', 'setTodate');
-setGransenInfo('/api/gallery/count', 'setItemLength');
+if(window.location.pathname === '/') {
+	setGransenInfo('/calendar', 'setTodate');
+	setGransenInfo('/api/gallery/count', 'setItemLength');
+}

@@ -5,8 +5,13 @@ const getCategoryItem = async (url, name, setMode) => {
     let listTitle;
     if(setMode == 'category'){
 		listTitle = document.querySelector('.listCategory .listTitle span.itemSize');
-	}else{
+	}else if(setMode == 'all'){
 		listTitle = document.querySelector('.listAll .listTitle span.itemSize');
+	}else{
+		const urlPath = url.split('/');
+		const keyword = ' <span style="color:#e42221;">{' + urlPath[urlPath.length-1] + '}</span>';
+		name += keyword;
+		listTitle = document.querySelector('.listSearch .listTitle span.itemSize');
 	}
     try {
 		if(listTitle){
@@ -42,15 +47,20 @@ const setList = (data, setMode) => {
 	if(setMode == 'category'){
 		listEle = document.querySelector('.listCategory .itemList');
 		limited = 6;
-	}else{
+	}else if(setMode == 'all'){
 		listEle = document.querySelector('.listAll .itemList');
 		limited = 24;
+	}else{
+		const searchHiddenSection = document.querySelector('section.mainDivider.searchHiddenSection');
+		searchHiddenSection.style.display = 'flex';
+		listEle = document.querySelector('.listSearch .itemList');
+		limited = data.length;
 	}
     const itemsToShow = data.slice(0, Math.min(data.length, limited));
     listEle.innerHTML = itemsToShow.map(createItemHTML).join('');
     
-			const tooltipTriggerList = listEle.querySelectorAll('[data-bs-toggle="tooltip"]');
-			const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+	const tooltipTriggerList = listEle.querySelectorAll('[data-bs-toggle="tooltip"]');
+	const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
     
     const item = listEle.querySelectorAll('section.item');
     item.forEach(btns=>{
@@ -117,8 +127,8 @@ const itemDetailView = (ele) => {
         ${createInfoSection('옵 션', '')}
         ${createInfoSection('코 드', code)}
     `;
-	getDetailImg('E:/gitakgi/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
-	//getDetailImg('H:/0_akgi/github/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
+	//getDetailImg('E:/gitakgi/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
+	getDetailImg('H:/0_akgi/github/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
 	    itemNameSection.innerHTML = `<section>Detail View [${itemName}]</section>`;
 	    itemDetailSection.setAttribute('src', '/images/detail/'+data);
 	});
@@ -126,3 +136,19 @@ const itemDetailView = (ele) => {
 
 //전체상품 가져오기
 getCategoryItem('/api/gallery', '전체', 'all');
+
+//검색상품 가져오기
+const getSearchItems = () => {
+	const keyword = document.querySelector('section.searchFormWrapper form.searchForm input.keyword');
+	keyword.addEventListener('keyup', (kw)=>{
+		if(kw.target.value.length > 0){
+			getCategoryItem(`/api/gallery/search/${kw.target.value}`, '검색상품', 'search');
+		}else{
+			
+		}
+	});
+}
+
+if(window.location.pathname === '/') {
+	getSearchItems();
+}

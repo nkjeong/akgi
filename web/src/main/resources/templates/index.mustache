@@ -11,7 +11,7 @@
 					Gransen Item Search
 				</section>
 				<section class="searchFormWrapper">
-					<form class="searchForm">
+					<form class="searchForm" onsubmit="return false;">
 						<input type="text" name="keyword" class="keyword">
 					</form>
 				</section>
@@ -37,6 +37,19 @@
 			</section>
 		</section>
 	</section>
+	<!-- 검색 hidden section 시작 -->
+	<section class="mainDivider searchHiddenSection">
+		<section class="mainLayoutWidth">
+			<section class="listSearch">
+				<section class="listTitle">
+					Search Items [<span class="itemSize"></span>]
+				</section>
+				<section class="itemList"></section>
+			</section>
+		</section>
+	</section>
+	<!-- 검색 hidden section 끝 -->
+	
 	<section class="mainDivider">
 		<section class="mainLayoutWidth">
 			<section class="listCategory">

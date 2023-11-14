@@ -457,7 +457,7 @@ form input[type=file]:hover{
 	text-align: center;
 }
 
-.listCategory {
+.listCategory, .listSearch{
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -509,10 +509,14 @@ form input[type=file]:hover{
 	border-top: 1px solid var(--sub-border-color);
 }
 
-.listAll .itemList{
+section.mainDivider.searchHiddenSection{
+	display: none;
+}
+
+.listAll .itemList, .listSearch .itemList{
 	flex-wrap: wrap;
 }
-.listAll .itemList section{
+.listAll .itemList section, .listSearch .itemList section{
 	margin-bottom:30px;
 }
 .fa-arrow-up-right-from-square{
@@ -541,6 +545,9 @@ section.staticBannerJoin article {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	width:100%;
+	height:350px;
+	border-radius: 10px;
 	background-image: url(/images/banner/img/banner_02.jpg);
 }
 section.staticBannerJoin article > p{
