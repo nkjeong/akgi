@@ -41,7 +41,7 @@
 
 .moreBack > section:first-child{
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
 	padding:20px 0;
 	font-size: 1.5rem;
 	font-weight: 700;
@@ -58,5 +58,55 @@
 
 .moreBack > section:last-child{
 	flex:1;
-	overflow-y: scroll;
+}
+
+.moreBackCloseBtn{
+	cursor:pointer;
+}
+.moreBackCloseBtn:hover{
+	color:var(--event-color);
+}
+
+section.mainBody{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+section.mainBody section{
+	height:80%;
+	width:100%;
+}
+
+section.mainBody .swiper {
+      width: 100%;
+      height: 100%;
+}
+
+section.mainBody .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: var(--background-body-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+}
+
+section.mainBody .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+}
+
+div.swiper-wrapper div.swiper-slide article.item{
+	width: 180px;
+	height:220px;
+    border: 1px solid var(--sub-border-color);
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+    margin:auto 15px;
 }

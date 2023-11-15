@@ -49,4 +49,8 @@ public class GalleryService {
     
         return galleryRepository.findAll(spec);
     }
+    
+    public List<Gallery> getGalleriesByExactCategoryCode(String categoryCode) {
+        return galleryRepository.findByCategoryCode(categoryCode);
+    }
 }

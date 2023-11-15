@@ -17,4 +17,6 @@ public interface GalleryRepository extends JpaRepository<Gallery, String>, JpaSp
     List<Gallery> findByCategoryCodeStartingWith(String prefix);
 
     List<Gallery> findByNameContaining(String partName);
+    
+    List<Gallery> findByCategoryCode(String categoryCode);
 }

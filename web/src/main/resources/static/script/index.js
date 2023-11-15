@@ -50,9 +50,10 @@ const updateSubMenu = async (categoryCode, subMenuElement) => {
 }
 
 const getSubItems = (ele) => {
+	const firstCategoryName = ele.parentNode.parentNode.parentNode.querySelector('article:first-child').textContent;
 	const code = ele.dataset.code+ele.dataset.subcode;
-	const menuName = ele.textContent;
-	getCategoryItem(`/api/gallery/code/${code}`, menuName, 'subCategory');
+	const menuName = '<span style="color:#e42221;">'+firstCategoryName + ' -> ' + ele.textContent+'</span>';
+	getCategoryItem(`/api/gallery/category/exact/${code}`, menuName, 'subCategory');
 }
 
 (async () => {

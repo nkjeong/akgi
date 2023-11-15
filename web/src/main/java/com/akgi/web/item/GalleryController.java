@@ -49,4 +49,9 @@ public class GalleryController {
         List<Gallery> results = galleryService.getGalleriesByNameWithAndSearch(partName);
         return ResponseEntity.ok(results);
     }
+    
+    @GetMapping("/category/exact/{categoryCode}")
+    public ResponseEntity<List<Gallery>> getGalleriesByExactCategoryCode(@PathVariable String categoryCode) {
+        return ResponseEntity.ok(galleryService.getGalleriesByExactCategoryCode(categoryCode));
+    }
 }

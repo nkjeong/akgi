@@ -23,6 +23,15 @@ const getCategoryItem = async (url, name, setMode) => {
 	        }
 	        const data = await response.json();
 			listTitle.innerHTML = `<b>${name}(${data.length}개)</b>`;
+			if(setMode == 'category'){
+				itemsMoreBtn.forEach((i)=>{
+					if(i.dataset.mode == 'category'){
+						const urlPath = url.split('/');
+						i.dataset.code = urlPath[urlPath.length-1];
+					}
+				});
+			}
+			
 	        setList(data, setMode);
         }
     } catch (error) {
@@ -59,7 +68,12 @@ const setList = (data, setMode) => {
 		limited = data.length;
 	}
     const itemsToShow = data.slice(0, Math.min(data.length, limited));
-    listEle.innerHTML = itemsToShow.map(createItemHTML).join('');
+    if(data.length > 0){
+		listEle.innerHTML = itemsToShow.map(createItemHTML).join('');
+	}else{
+		listEle.innerHTML = '<article style="margin:30px auto; font-size:1.3rem; font-weight:700; color:#e42221;">검색된 상품이 없습니다.</article>';
+	}
+    
     
 	const tooltipTriggerList = listEle.querySelectorAll('[data-bs-toggle="tooltip"]');
 	const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
@@ -129,8 +143,8 @@ const itemDetailView = (ele) => {
         ${createInfoSection('옵 션', '')}
         ${createInfoSection('코 드', code)}
     `;
-	getDetailImg('E:/gitakgi/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
-	//getDetailImg('H:/0_akgi/github/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
+	//getDetailImg('E:/gitakgi/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
+	getDetailImg('H:/0_akgi/github/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
 	    itemNameSection.innerHTML = `<section>Detail View [${itemName}]</section>`;
 	    itemDetailSection.setAttribute('src', '/images/detail/'+data);
 	});
