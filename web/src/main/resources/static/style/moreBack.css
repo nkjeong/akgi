@@ -18,7 +18,7 @@
 }
 .moreBack.fadeIn, .moreBack.fadeOut{
     animation-timing-function: ease-in-out;
-    animation-duration: 0.5s;  /* 원하는 시간으로 설정 */
+    animation-duration: 0.2s;  /* 원하는 시간으로 설정 */
     animation-fill-mode: forwards;
 }
 
