@@ -135,7 +135,7 @@ const itemDetailView = (ele) => {
 
     itemInfomation.innerHTML = `
         ${createInfoSection('정상가', getCurrentMony(price))}
-        ${createInfoSection('공급가', getCurrentMony(servicePrice))}
+        ${createInfoSection('공급가', /*getCurrentMony(servicePrice)*/'')}
         ${createInfoSection('원산지', origin)}
         ${createInfoSection('모델명', itemNumber)}
         ${createInfoSection('사이즈', size)}
@@ -143,7 +143,8 @@ const itemDetailView = (ele) => {
         ${createInfoSection('옵 션', '')}
         ${createInfoSection('코 드', code)}
     `;
-    getDetailImg('j:/akgi/git/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
+    getDetailImg('/web/akgiwebapp/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
+    //getDetailImg('j:/akgi/git/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
 	//getDetailImg('E:/gitakgi/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
 	//getDetailImg('H:/0_akgi/github/akgi/web/src/main/resources/static/images/detail', `gransen_${code}.jpg`).then(data => {
 	    itemNameSection.innerHTML = `<section>Detail View [${itemName}]</section>`;

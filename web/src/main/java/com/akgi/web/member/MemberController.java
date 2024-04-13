@@ -10,4 +10,9 @@ public class MemberController {
     public String joinPage() {
         return "join/index";
     }
+    
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login/index";
+    }
 }

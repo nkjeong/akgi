@@ -540,7 +540,8 @@ section.mainDivider.searchHiddenSection{
 .staticBanner_3 article{
 	background-image: url(/images/banner/img/banner_03.jpg);
 }
-section.staticBannerJoin article {
+section.staticBannerJoin article,
+section.staticBannerLogin article {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -550,13 +551,19 @@ section.staticBannerJoin article {
 	border-radius: 10px;
 	background-image: url(/images/banner/img/banner_02.jpg);
 }
-section.staticBannerJoin article > p{
+section.staticBannerJoin article > p,
+section.staticBannerLogin article > p{
 	color: var(--banner-in-text-color);
 	text-shadow: 2px 2px 5px var(--member-section-color);
 }
-section.staticBannerJoin article > p:first-child{
+section.staticBannerJoin article > p:first-child,
+section.staticBannerLogin article > p:first-child{
 	font-size: 3.0rem;
 	font-weight: 700;
+}
+
+section.staticBannerLogin article{
+	background-image: url(/images/banner/img/banner_04.jpg);
 }
 
 section.memberWrapper{
