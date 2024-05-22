@@ -378,6 +378,7 @@ form.joinForm, form.loginForm{
 }
 
 form.loginForm{
+	flex-direction:column;
 	justify-content: center;
 }
 form.loginForm > section{
