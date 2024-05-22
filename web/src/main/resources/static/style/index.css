@@ -371,10 +371,34 @@ main>section.mainDivider>section {
 	border-radius: 10px 10px 10px 10px;
 	padding: 5px 10px;
 }
-form.joinForm{
+form.joinForm, form.loginForm{
 	display: flex;
 	width:100%;
 	padding:20px;
+}
+
+form.loginForm{
+	justify-content: center;
+}
+form.loginForm > section{
+	border:1px solid var(--sub-border-color);
+}
+form.loginForm > section > section:first-child{
+	border-bottom:1px solid var(--sub-border-color);
+}
+form.loginForm section section{
+	display: flex;
+	padding : 10px 0;
+}
+form.loginForm section section section:first-child{
+	width:30px;
+	display: flex;
+	justify-content: center;
+}
+form.loginForm section section section{
+	display: flex;
+	align-items: center;
+	margin : 0 10px;
 }
 
 form.joinForm section.joinFormTitle{
