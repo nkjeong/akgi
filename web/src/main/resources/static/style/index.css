@@ -380,9 +380,11 @@ form.joinForm, form.loginForm{
 form.loginForm{
 	flex-direction:column;
 	justify-content: center;
+	align-items: center;
 }
 form.loginForm > section{
 	border:1px solid var(--sub-border-color);
+	width:30%;
 }
 form.loginForm > section > section:first-child{
 	border-bottom:1px solid var(--sub-border-color);
@@ -390,6 +392,7 @@ form.loginForm > section > section:first-child{
 form.loginForm section section{
 	display: flex;
 	padding : 10px 0;
+	justify-content: center;
 }
 form.loginForm section section section:first-child{
 	width:30px;
@@ -402,6 +405,20 @@ form.loginForm section section section{
 	margin : 0 10px;
 }
 
+form.loginForm > section:last-child{
+	border: 0;
+	padding:10px 0;
+}
+form.loginForm > section:last-child > input{
+	width:100%;
+	padding:10px 0;
+	text-align: center;
+}
+.error{
+	text-align: center;
+	color:#e42221;
+	padding:10px 0;
+}
 form.joinForm section.joinFormTitle{
 	font-size:1.2rem;
 	font-weight:700;

@@ -10,15 +10,25 @@
 </section>
 <section class="mainDivider">
 	<section class="mainLayoutWidth memberWrapper">
-		<form name="joinForm" class="joinForm">
+		<form name="joinForm" class="joinForm" method="post" action="/join/memberJoin" onsubmit="return ckForm(this);">
+			<input type="hidden" name="userFAX" value="no">
+			<input type="hidden" name="userSubscribe" value="N">
+			<input type="hidden" name="authority" value="B">
 			<section>
 				<section class="joinFormTitle">개인정보</section>
+				<section>
+					<label for="userName">이름</label>
+					<input type="text" name="userName" class="userName" autocomplete="off" required>
+				</section>
 				<section class="inButton">
 					<article>
 						<label for="userId">아이디</label>
 						<input type="text" name="userId" autocomplete="off" class="userId" required>
 					</article>
-					<article class="idDoubleCheckMsg"></article>
+					<article class="idDoubleCheckMsg">
+						<input type="button" value="중복확인" data-button="idCk">
+						<input type="hidden" class="idCkStatus" value="NOCK">
+					</article>
 				</section>
 				<section>
 					<label for="userPw">비밀번호</label>
@@ -39,70 +49,165 @@
 				<section class="inButton">
 					<article>
 						<label for="userZipCode">우편번호</label>
-						<input type="text" name="userZipCode" autocomplete="off" required readonly>
+						<input type="text" name="userZipCode" class="userZipCode" autocomplete="off" required readonly>
 					</article>
 					<article>
-						<input type="button" value="주소찾기" data-button="findAddrPersonal">
+						<input type="button" value="주소찾기" data-button="findAddrPersonal" onclick="setAddr(this.dataset.button);">
 					</article>
 				</section>
 				<section>
 					<label for="userAddr_1">주소</label>
-					<input type="text" name="userAddr_1" autocomplete="off" required readonly>
+					<input type="text" name="userAddr_1" class="userAddr_1" autocomplete="off" required readonly>
 				</section>
 				<section>
 					<label for="userAddr_2">나머지주소</label>
 					<input type="text" name="userAddr_2" autocomplete="off" required>
 				</section>
 				<section>
-					<label for="userAddr_1">전화번호</label>
-					<input type="text" name="userAddr_1" autocomplete="off" required>
+					<label for="userPhone">전화번호</label>
+					<input type="text" name="userPhone" autocomplete="off" maxlength="11" required>
 				</section>
 				<section>
-					<label for="userAddr_2">휴대폰번호</label>
-					<input type="text" name="userAddr_2" autocomplete="off" required>
+					<label for="userMobilePhone">휴대폰번호</label>
+					<input type="text" name="userMobilePhone" autocomplete="off" maxlength="11" required>
 				</section>
 			</section>
 			<section>
 				<section class="joinFormTitle">사업자정보</section>
 				<section>
-					<label for="userId">회사명</label>
+					<label for="companyName">회사명</label>
 					<input type="text" name="companyName" autocomplete="off" required>
 				</section>
 				<section>
-					<label for="userId">사업자번호</label>
-					<input type="text" name="businessNumber" autocomplete="off" required>
+					<label for="businessNumber">사업자번호</label>
+					<input type="text" name="businessNumber" autocomplete="off" maxlength="10" required>
 				</section>
 				<section class="inButton">
 					<article>
-						<label for="userZipCode">우편번호</label>
-						<input type="text" name="companyZipCode" autocomplete="off" required readonly>
+						<label for="companyZipCode">우편번호</label>
+						<input type="text" name="companyZipCode" class="companyZipCode" autocomplete="off" required readonly>
 					</article>
 					<article>
-						<input type="button" value="주소찾기" data-button="findAddrCompany">
+						<input type="button" value="주소찾기" data-button="findAddrCompany" onclick="setAddr(this.dataset.button);">
 					</article>
 				</section>
 				<section>
-					<label for="userAddr_1">주소</label>
-					<input type="text" name="companyAddr_1" autocomplete="off" required readonly>
+					<label for="companyAddr_1">주소</label>
+					<input type="text" name="companyAddr_1" class="companyAddr_1" autocomplete="off" required readonly>
 				</section>
 				<section>
-					<label for="userAddr_2">나머지주소</label>
+					<label for="companyAddr_2">나머지주소</label>
 					<input type="text" name="companyAddr_2" autocomplete="off" required>
 				</section>
 				<section>
-					<label for="userAddr_1">전화번호</label>
-					<input type="text" name="companyPhone" autocomplete="off" required>
+					<label for="companyPhone">전화번호</label>
+					<input type="text" name="companyPhone" autocomplete="off" maxlength="11" required>
 				</section>
 				<section>
-					<label for="userAddr_1">팩스번호</label>
-					<input type="text" name="companyFAX" autocomplete="off" required>
+					<label for="companyFAX">팩스번호</label>
+					<input type="text" name="companyFAX" autocomplete="off" maxlength="11" required>
 				</section>
 				<section>
-					<label for="userAddr_1">사업자등록증 업로드</label>
-					<input type="file" name="companyFAX" autocomplete="off" required>
+					<label for="businessRegistration">사업자등록증 업로드</label>
+					<input type="file" name="businessRegistration" autocomplete="off" required>
+				</section>
+				<section class="joinBtns">
+					<section>
+						<input type="submit" value="가입하기">
+					</section>
 				</section>
 			</section>
 		</form>
 	</section>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
+		//주소찾기
+		function setAddr(getMode){
+			var zipCode = '';
+			var addr_1 = '';
+			if(getMode == 'findAddrPersonal'){
+				zipCode = 'userZipCode';
+				addr_1 = 'userAddr_1';
+			}else{
+				zipCode = 'companyZipCode';
+				addr_1 = 'companyAddr_1';
+			}
+			new daum.Postcode({
+        		oncomplete: function(data) {
+	                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+	
+	                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+	                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	                var roadAddr = data.roadAddress; // 도로명 주소 변수
+	                var extraRoadAddr = ''; // 참고 항목 변수
+	
+	                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+	                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+	                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                    extraRoadAddr += data.bname;
+	                }
+	                // 건물명이 있고, 공동주택일 경우 추가한다.
+	                if(data.buildingName !== '' && data.apartment === 'Y'){
+	                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                }
+	                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+	                if(extraRoadAddr !== ''){
+	                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+	                }
+	                document.querySelector(`.${zipCode}`).value = data.zonecode;
+	                document.querySelector(`.${addr_1}`).value = roadAddr;
+        		}
+    		}).open();
+		}
+		
+		//아이디체크
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector('input[data-button="idCk"]').addEventListener("click", function() {
+                var userId = document.querySelector('input[name="userId"]').value;
+                
+                fetch(`/checkUserId?userId=${userId}`, {
+                    method: 'GET',
+                })
+                .then(response => response.text())
+                .then(response => {
+                    if (response === 'MEMBER') {
+                        alert('이미 사용 중인 아이디입니다.');
+                        document.querySelector('.idCkStatus').value = 'NO';
+                    } else {
+                        alert('사용 가능한 아이디입니다.');
+                        document.querySelector('.idCkStatus').value = 'YES';
+                    }
+                })
+                .catch(error => {
+                    alert('아이디 확인 중 오류가 발생했습니다.');
+                });
+            });
+        });
+        
+        //폼체크
+        function ckForm(form){
+        	
+        	//아이디 중복확인
+        	var idCkStatus = form.idCkStatus.value;
+        	if(idCkStatus === 'NOCK'){
+        		alert('아이디 중복확인 바랍니다!');
+        		return false;
+        	}else if(idCkStatus === 'NO'){
+        		alert("이미 사용 중인 아이디입니다. 다른 아이디를 입력하세요!");
+        		form.userId.value='';
+        		form.userId.focus();
+        		return false;
+        	}
+        	
+        	//비밀번호 확인
+        	var ckPwd = form.idCkStatus.ckPwd;
+        	if(ckPwd === 'NO'){
+        		alert('비밀번호 형식이 틀리니다. 다시 입력하세요\n(숫자, 영문 대소문자, 특수문자 !, @, #, %, _ 을 포함해 주세요)');
+        		return false;
+        	}
+        	
+        	return false;
+        }
+	</script>
 </section>
 {{>/layouts/footer}}

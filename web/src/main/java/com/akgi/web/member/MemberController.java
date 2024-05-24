@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MemberController {
 
-    @GetMapping("/join")
+    @GetMapping("/joinPage")
     public String joinPage() {
         return "join/index";
     }
     
-    @GetMapping("/login")
+    @GetMapping("/loginPage")
     public String loginPage() {
         return "login/index";
     }

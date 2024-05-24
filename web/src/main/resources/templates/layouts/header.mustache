@@ -58,8 +58,14 @@
 					<section>
 						<nav>
 							<ul>
-								<li onclick="location.href='/join';">JOIN</li>
-								<li onclick="location.href='/login';">LOGIN</li>
+								{{#user}}
+									<li>{{userId}}({{userName}})님 안녕하세요</li>
+									<li onclick="location.href='/logout';">LOOUT</li>
+						        {{/user}}
+						        {{^user}}
+									<li onclick="location.href='/joinPage';">JOIN</li>
+									<li onclick="location.href='/loginPage';">LOGIN</li>
+						        {{/user}}
 							</ul>
 						</nav>
 					</section>
