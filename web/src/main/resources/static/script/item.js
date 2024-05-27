@@ -1,5 +1,5 @@
 "use strict";
-
+const sessionUserId = document.querySelector('.sessionUserId');
 //카테고리 상품 가져오기
 const getCategoryItem = async (url, name, setMode) => {
     let listTitle;
@@ -122,6 +122,7 @@ const itemDetailView = (ele) => {
     const itemNameSection = offcanvasLastDiv.querySelector('section:first-child');
     const itemDetailSection = offcanvasLastDiv.querySelector('section:last-child img');
 
+
     offcanvasExampleLabel.innerText = `${itemName} ${itemNumber}`;
     
     representativeImage.innerHTML = `<img src="/images/1000/gransen_${code}.jpg">`;
@@ -135,7 +136,7 @@ const itemDetailView = (ele) => {
 
     itemInfomation.innerHTML = `
         ${createInfoSection('정상가', getCurrentMony(price))}
-        ${createInfoSection('공급가', /*getCurrentMony(servicePrice)*/'')}
+        ${createInfoSection('공급가', getCurrentMony(servicePrice))}
         ${createInfoSection('원산지', origin)}
         ${createInfoSection('모델명', itemNumber)}
         ${createInfoSection('사이즈', size)}
