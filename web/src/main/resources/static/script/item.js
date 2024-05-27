@@ -127,12 +127,19 @@ const itemDetailView = (ele) => {
     
     representativeImage.innerHTML = `<img src="/images/1000/gransen_${code}.jpg">`;
     
-    const createInfoSection = (title, value) => `
-        <section>
-            <article>${title} :</article>
-            <article>${value}</article>
-        </section>
-    `;
+    const createInfoSection = (title, value) => {
+		
+		if(sessionUserId === null && title === '공급가'){
+			value = 'You can view it after logging in.';
+		}
+		
+		return `
+	        <section>
+	            <article>${title} :</article>
+	            <article>${value}</article>
+	        </section>
+    	`;
+    }
 
     itemInfomation.innerHTML = `
         ${createInfoSection('정상가', getCurrentMony(price))}
