@@ -31,7 +31,7 @@ public class UserController {
             session.setAttribute("user", user);
             return "redirect:/";
         } else {
-            model.addAttribute("error", "Invalid username or password");
+            model.addAttribute("error", "아이디 또는 비밀번호가 맞지 않습니다. 다시 로그인 하세요!");
             return "login/index"; // 템플릿 경로 포함
         }
     }
