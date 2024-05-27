@@ -75,4 +75,13 @@
 	.offcanvas.offcanvas-start .offcanvas-body>div:first-child>section:first-child{
 		width:200px;
 	}
+	form.loginForm > section{
+		width:90%;
+	}
+	li.joinBtn{
+		display: none;
+	}
+	section.staticBannerLogin > section > article > p:last-child{
+		display: none;
+	}
 }

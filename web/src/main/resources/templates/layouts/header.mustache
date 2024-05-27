@@ -61,12 +61,12 @@
 						<nav>
 							<ul>
 								{{#user}}
-									<li>{{userId}}({{userName}})님 안녕하세요</li>
+									<li>{{userId}}</li>
 									<li onclick="location.href='/logout';">LOOUT</li>
 									<input type="hidden" name="sessionUserId" class="sessionUserId" value="{{userId}}">
 						        {{/user}}
 						        {{^user}}
-									<li onclick="location.href='/joinPage';">JOIN</li>
+									<li onclick="location.href='/joinPage';" class="joinBtn">JOIN</li>
 									<li onclick="location.href='/loginPage';">LOGIN</li>
 						        {{/user}}
 							</ul>
